@@ -40,6 +40,24 @@ namespace Chat_Box
             lbluser.Text = username;
             this.username = username;
         }
+
+        private Control DialogChat(string id, string username, string pesan)
+        {
+            ChatDialog form = new();
+            var gpuser = form.Controls.Find("gpuser", true)[0];
+            var lblpesan = form.Controls.Find("lblpesan", true)[0];
+
+            gpuser.Name = id;
+            gpuser.Text = username;
+            lblpesan.Text = pesan;
+            gpuser.Height = 200;
+            gpuser.Width = flppesan.Width - 30;
+            lblpesan.MaximumSize = new Size(gpuser.Width - 10, 0);
+            gpuser.Height = lblpesan.Height + 30;
+
+            return gpuser;
+        }
+
         private async Task LoopUpdateChatLog(CancellationTokenSource stopToken)
         {
             try
@@ -70,11 +88,15 @@ namespace Chat_Box
                         flppesan.Controls.Clear();
                     foreach (var putChat in toJson["result"])
                     {
-                        string formatText = putChat["username"].ToString() + " : " + putChat["pesan"].ToString();
-                        string lblid = putChat["id_pesan"].ToString();
-                        Control[] chk = flppesan.Controls.Find(lblid, true);
+                        string username = putChat["username"].ToString();
+                        string pesan = putChat["pesan"].ToString();
+                        string id = putChat["id_pesan"].ToString();
+
+                        Control[] chk = flppesan.Controls.Find(id, true);
                         if (chk.Length == 0)
-                            flppesan.Controls.Add(new Label() { Name = lblid, Text = formatText, Size = new Size(flppesan.Width - 30, 20) });
+                        {
+                            flppesan.Controls.Add(DialogChat(id,username,pesan));
+                        }
                     }
                 }
             }
