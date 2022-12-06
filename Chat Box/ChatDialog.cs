@@ -10,14 +10,19 @@ using System.Windows.Forms;
 
 namespace Chat_Box
 {
-    public partial class Form1 : Form
+    public partial class ChatDialog : Form
     {
-        public Form1()
+        public ChatDialog()
         {
             InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gpuser_Enter(object sender, EventArgs e)
         {
 
         }
