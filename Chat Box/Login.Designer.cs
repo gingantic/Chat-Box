@@ -50,6 +50,7 @@
             this.txtpass.Name = "txtpass";
             this.txtpass.Size = new System.Drawing.Size(100, 23);
             this.txtpass.TabIndex = 8;
+            this.txtpass.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtpass_KeyDown);
             // 
             // label1
             // 
@@ -66,6 +67,7 @@
             this.txtuser.Name = "txtuser";
             this.txtuser.Size = new System.Drawing.Size(100, 23);
             this.txtuser.TabIndex = 6;
+            this.txtuser.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtuser_KeyDown);
             // 
             // btnlogin
             // 

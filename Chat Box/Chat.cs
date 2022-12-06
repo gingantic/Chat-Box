@@ -47,6 +47,12 @@ namespace Chat_Box
             var gpuser = form.Controls.Find("gpuser", true)[0];
             var lblpesan = form.Controls.Find("lblpesan", true)[0];
 
+            if (this.username == username)
+            {
+                username = "Anda";
+                gpuser.ForeColor = Color.Green;
+            }
+            lblpesan.ForeColor = Color.Black;
             gpuser.Name = id;
             gpuser.Text = username;
             lblpesan.Text = pesan;
@@ -65,7 +71,7 @@ namespace Chat_Box
                 while (!stopToken.IsCancellationRequested)
                 {
                     await UpdateChatLog(currentChatid,true);
-                    await Task.Delay(750);
+                    await Task.Delay(850);
                 }
             }
             catch(Exception e)
@@ -94,9 +100,7 @@ namespace Chat_Box
 
                         Control[] chk = flppesan.Controls.Find(id, true);
                         if (chk.Length == 0)
-                        {
                             flppesan.Controls.Add(DialogChat(id,username,pesan));
-                        }
                     }
                 }
             }
@@ -127,6 +131,8 @@ namespace Chat_Box
                 var checkchatid = await client.PostData(sqlquery);
                 if (!checkchatid.Contains("Error"))
                 {
+                    btnmasuk.Enabled = false;
+                    btnmasuk.Text = "Loading";
                     flppesan.Controls.Clear();
                     var toJson = JObject.Parse(checkchatid);
                     if (toJson["result"].Count() != 0)
@@ -161,6 +167,8 @@ namespace Chat_Box
                 {
                     MessageBox.Show("Error " + checkchatid);
                 }
+                btnmasuk.Enabled = true;
+                btnmasuk.Text = "Masuk";
                 await LoopUpdateChatLog(stopToken);
             }
         }
@@ -188,6 +196,27 @@ namespace Chat_Box
             }
             flppesan.VerticalScroll.Value = flppesan.VerticalScroll.Maximum;
             txtpesan.Clear();
+        }
+
+        private void txtchatid_Enter(object sender, EventArgs e)
+        {
+            MessageBox.Show("enter");
+        }
+
+        private void txtchatid_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnmasuk_Click(sender, e);
+            }
+        }
+
+        private void txtpesan_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnkirim_Click(sender, e);
+            }
         }
     }
 }

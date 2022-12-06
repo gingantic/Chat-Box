@@ -38,7 +38,7 @@
             this.gpuser.Controls.Add(this.lblpesan);
             this.gpuser.Location = new System.Drawing.Point(12, 12);
             this.gpuser.Name = "gpuser";
-            this.gpuser.Size = new System.Drawing.Size(384, 133);
+            this.gpuser.Size = new System.Drawing.Size(384, 137);
             this.gpuser.TabIndex = 0;
             this.gpuser.TabStop = false;
             this.gpuser.Text = "Username";
@@ -57,7 +57,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(408, 253);
+            this.ClientSize = new System.Drawing.Size(408, 161);
             this.Controls.Add(this.gpuser);
             this.Name = "ChatDialog";
             this.Text = "Form1";

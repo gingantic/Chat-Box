@@ -121,6 +121,7 @@
             this.txtpesan.Name = "txtpesan";
             this.txtpesan.Size = new System.Drawing.Size(293, 23);
             this.txtpesan.TabIndex = 2;
+            this.txtpesan.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtpesan_KeyDown);
             // 
             // btnmasuk
             // 
@@ -139,6 +140,7 @@
             this.txtchatid.Name = "txtchatid";
             this.txtchatid.Size = new System.Drawing.Size(163, 23);
             this.txtchatid.TabIndex = 0;
+            this.txtchatid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtchatid_KeyDown);
             // 
             // Chat
             // 

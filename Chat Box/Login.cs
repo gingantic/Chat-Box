@@ -59,5 +59,21 @@ namespace Chat_Box
         {
 
         }
+
+        private void txtuser_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnlogin_Click(sender, e);
+            }
+        }
+
+        private void txtpass_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnlogin_Click(sender, e);
+            }
+        }
     }
 }
