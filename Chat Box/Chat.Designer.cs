@@ -78,7 +78,6 @@
             this.lbluser.Size = new System.Drawing.Size(60, 15);
             this.lbluser.TabIndex = 3;
             this.lbluser.Text = "Username";
-            this.lbluser.Click += new System.EventHandler(this.lbluser_Click);
             // 
             // groupBox1
             // 
@@ -154,7 +153,6 @@
             this.MinimizeBox = false;
             this.Name = "Chat";
             this.Text = "Chat";
-            this.Load += new System.EventHandler(this.Chat_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

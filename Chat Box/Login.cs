@@ -21,33 +21,38 @@ namespace Chat_Box
             };
 
             var getData = await httpHelp.PostData(passQuery);
-
-            if (!getData.Contains("Error") && txtuser.Text != "" && txtpass.Text != "")
+            try
             {
-                var toJson = JObject.Parse(getData);
-                if (toJson["result"].Count() != 0)
+                if (txtuser.Text != "" && txtpass.Text != "")
                 {
-                    string username = toJson["result"][0]["username"].ToString();
-                    string password = toJson["result"][0]["password"].ToString();
-
-                    if (username == txtuser.Text && password == txtpass.Text)
+                    var toJson = JObject.Parse(getData);
+                    if (toJson["result"].Any())
                     {
-                        Chat chatform = new(username);
-                        this.Hide();
-                        chatform.ShowDialog();
-                        this.Close();
+                        string username = toJson["result"][0]["username"].ToString();
+                        string password = toJson["result"][0]["password"].ToString();
+
+                        if (username == txtuser.Text && password == txtpass.Text)
+                        {
+                            Chat chatform = new(username);
+                            this.Hide();
+                            chatform.ShowDialog();
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("username atau password salah","Kesalahan");
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("username atau password salah");
+                        MessageBox.Show("username atau password salah", "Kesalahan");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("username tidak ada, Yah kasihan");
+                    
                 }
-            }
-            else
+            }catch(Exception)
             {
                 MessageBox.Show(getData);
             }

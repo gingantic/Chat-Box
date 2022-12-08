@@ -29,12 +29,14 @@
         private void InitializeComponent()
         {
             this.gpuser = new System.Windows.Forms.GroupBox();
+            this.lblwaktu = new System.Windows.Forms.Label();
             this.lblpesan = new System.Windows.Forms.Label();
             this.gpuser.SuspendLayout();
             this.SuspendLayout();
             // 
             // gpuser
             // 
+            this.gpuser.Controls.Add(this.lblwaktu);
             this.gpuser.Controls.Add(this.lblpesan);
             this.gpuser.Location = new System.Drawing.Point(12, 12);
             this.gpuser.Name = "gpuser";
@@ -44,9 +46,22 @@
             this.gpuser.Text = "Username";
             this.gpuser.Enter += new System.EventHandler(this.gpuser_Enter);
             // 
+            // lblwaktu
+            // 
+            this.lblwaktu.AutoSize = true;
+            this.lblwaktu.BackColor = System.Drawing.Color.Transparent;
+            this.lblwaktu.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblwaktu.ForeColor = System.Drawing.Color.Black;
+            this.lblwaktu.Location = new System.Drawing.Point(330, 119);
+            this.lblwaktu.Name = "lblwaktu";
+            this.lblwaktu.Size = new System.Drawing.Size(48, 15);
+            this.lblwaktu.TabIndex = 1;
+            this.lblwaktu.Text = "Tanggal";
+            // 
             // lblpesan
             // 
             this.lblpesan.AutoSize = true;
+            this.lblpesan.ForeColor = System.Drawing.Color.Black;
             this.lblpesan.Location = new System.Drawing.Point(3, 19);
             this.lblpesan.Name = "lblpesan";
             this.lblpesan.Size = new System.Drawing.Size(52, 15);
@@ -72,5 +87,6 @@
 
         private GroupBox gpuser;
         private Label lblpesan;
+        private Label lblwaktu;
     }
 }

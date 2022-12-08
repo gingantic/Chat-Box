@@ -27,7 +27,6 @@ namespace Chat_Box
             client.DefaultRequestHeaders.Add("User-Agent", ".NET Foundation Repository Reporter");
         }
 
-        //public async Task<string> PostData(string data, string url, Func<JObject, int> handlerData, Func<Exception, int> throwError)
         public async Task<string> PostData(PassQuery data, string url = "https://vps.gins.my.id/database/get.php")
         {
             try
@@ -38,7 +37,7 @@ namespace Chat_Box
             }
             catch (Exception e)
             {
-                return "Error1 : " + e.Message;
+                return e.Message;
             }
         }
     }
