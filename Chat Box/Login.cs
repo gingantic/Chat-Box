@@ -80,5 +80,11 @@ namespace Chat_Box
                 btnlogin_Click(sender, e);
             }
         }
+
+        private void lbldaftar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Daftar form = new();
+            form.ShowDialog();
+        }
     }
 }
