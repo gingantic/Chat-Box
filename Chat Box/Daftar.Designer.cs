@@ -108,7 +108,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Daftar";
-            this.Text = "Form1";
+            this.Text = "Daftar";
             this.Load += new System.EventHandler(this.Daftar_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

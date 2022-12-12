@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Chat_Box.HttpHelper;
 
 namespace Chat_Box
 {
@@ -25,6 +26,19 @@ namespace Chat_Box
         private void gpuser_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private async void lblhapus_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show("Apakah Ingin Menghapus Pesan ?", "Yakin Dek ?", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                HttpHelper client = new();
+                PassQuery passQuery = new();
+
+                passQuery.query = "DELETE FROM chat_log WHERE id_pesan = '"+ gpuser.Name +"'";
+                await client.PostData(passQuery);
+            }
         }
     }
 }

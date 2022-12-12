@@ -1,4 +1,5 @@
-﻿using System;
+﻿//capek eugh
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -42,18 +43,22 @@ namespace Chat_Box
             lbluser.Text = username;
             this.username = username;
         }
-
         private Control DialogChat(string id, string username, string pesan, string waktu)
         {
             ChatDialog form = new();
             var gpuser = form.Controls.Find("gpuser", true)[0];
             var lblpesan = form.Controls.Find("lblpesan", true)[0];
             var lblwaktu = form.Controls.Find("lblwaktu", true)[0];
+            var lblhapus = form.Controls.Find("lblhapus", true)[0];
 
             if (this.username == username)
             {
                 username = "Anda";
                 gpuser.ForeColor = Color.Green;
+            }
+            else
+            {
+                lblhapus.Dispose();
             }
 
             DateTime date = DateTime.Parse(waktu);
@@ -74,6 +79,8 @@ namespace Chat_Box
 
             lblwaktu.Location = new Point(gpuser.Right - (lblwaktu.Width + 13), gpuser.Bottom - (lblwaktu.Height + 16));
 
+            lblhapus.Location = new Point(4, gpuser.Bottom - (lblwaktu.Height + 16));
+
             return gpuser;
         }
 
@@ -89,8 +96,31 @@ namespace Chat_Box
             }
             catch(Exception e)
             {
-                MessageBox.Show(e.Message);
-                return;
+                MessageBox.Show("Error 6754 "+e.Message);
+            }
+        }
+        private void UpdateDeleteChatLog(JObject json)
+        {
+            List<string> flparray = new();
+            List<string> jsonarray = new();
+            foreach (Control control in flppesan.Controls)
+            {
+                flparray.Add(control.Name);
+            }
+            foreach (var putId in json["result"])
+            {
+                jsonarray.Add(putId["id_pesan"].ToString());
+            }
+
+            var result = flparray.Except(jsonarray).ToList();
+
+            foreach (var i in result)
+            {
+                Control[] chk = flppesan.Controls.Find(i, true);
+                if (chk.Length != 0)
+                {
+                    flppesan.Controls.Remove(chk[0]);
+                }
             }
         }
         private async Task UpdateChatLog(string id_chat, bool loop = false)
@@ -105,6 +135,7 @@ namespace Chat_Box
                 {
                     if (!loop)
                         flppesan.Controls.Clear();
+                    int counterMessage = toJson["result"].Count();
                     foreach (var putChat in toJson["result"])
                     {
                         string username = putChat["username"].ToString();
@@ -112,14 +143,16 @@ namespace Chat_Box
                         string id = putChat["id_pesan"].ToString();
                         string waktu = putChat["waktu"].ToString();
                         Control[] chk = flppesan.Controls.Find(id, true);
-                        if (chk.Length == 0)
-                            flppesan.Controls.Add(DialogChat(id,username,pesan,waktu));
+                        if (chk.Length == 0) {
+                            flppesan.Controls.Add(DialogChat(id, username, pesan, waktu));
+                        }
                     }
+                    UpdateDeleteChatLog(toJson);
                 }
             }
-            catch(Exception)
+            catch(Exception eX)
             {
-                MessageBox.Show("Error " + updatechat);
+                MessageBox.Show("Error 7753" + updatechat +" "+eX.Message);
             }
         }
         private async void btnmasuk_Click(object sender, EventArgs e)
@@ -150,7 +183,7 @@ namespace Chat_Box
                             var inputnewchatid = await client.PostData(sqlquery);
                             if (inputnewchatid.Contains("Error"))
                             {
-                                MessageBox.Show("Error " + inputnewchatid);
+                                MessageBox.Show("Error 7133" + inputnewchatid);
                                 return;
                             }
                             else
@@ -167,7 +200,7 @@ namespace Chat_Box
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Error " + checkchatid);
+                    MessageBox.Show("Error 7789" + checkchatid);
                 }
                 btnmasuk.Enabled = true;
                 btnmasuk.Text = "Masuk";
@@ -178,7 +211,6 @@ namespace Chat_Box
                 MessageBox.Show("Masukan Chat ID !");
             }
         }
-
         private async void btnkirim_Click(object sender, EventArgs e)
         {
             PassQuery sqlquery = new();
@@ -192,7 +224,7 @@ namespace Chat_Box
                 var inputnewchatid = await client.PostData(sqlquery);
                 if (inputnewchatid.Contains("Error"))
                 {
-                    MessageBox.Show("Error " + inputnewchatid);
+                    MessageBox.Show("Error 1132" + inputnewchatid);
                     return;
                 }
                 else
@@ -208,7 +240,6 @@ namespace Chat_Box
             if (e.KeyCode == Keys.Enter)
                 btnmasuk_Click(sender, e);
         }
-
         private void txtpesan_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)

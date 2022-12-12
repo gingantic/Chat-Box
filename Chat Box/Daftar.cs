@@ -56,6 +56,10 @@ namespace Chat_Box
                         MessageBox.Show("Error " + ex);
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Password Tidak Sama !!!");
+                }
             }
             else
             {

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.gpuser = new System.Windows.Forms.GroupBox();
+            this.lblhapus = new System.Windows.Forms.Label();
             this.lblwaktu = new System.Windows.Forms.Label();
             this.lblpesan = new System.Windows.Forms.Label();
             this.gpuser.SuspendLayout();
@@ -36,6 +37,7 @@
             // 
             // gpuser
             // 
+            this.gpuser.Controls.Add(this.lblhapus);
             this.gpuser.Controls.Add(this.lblwaktu);
             this.gpuser.Controls.Add(this.lblpesan);
             this.gpuser.Location = new System.Drawing.Point(12, 12);
@@ -46,13 +48,24 @@
             this.gpuser.Text = "Username";
             this.gpuser.Enter += new System.EventHandler(this.gpuser_Enter);
             // 
+            // lblhapus
+            // 
+            this.lblhapus.AutoSize = true;
+            this.lblhapus.ForeColor = System.Drawing.Color.Red;
+            this.lblhapus.Location = new System.Drawing.Point(3, 118);
+            this.lblhapus.Name = "lblhapus";
+            this.lblhapus.Size = new System.Drawing.Size(75, 15);
+            this.lblhapus.TabIndex = 2;
+            this.lblhapus.Text = "Hapus Pesan";
+            this.lblhapus.Click += new System.EventHandler(this.lblhapus_Click);
+            // 
             // lblwaktu
             // 
             this.lblwaktu.AutoSize = true;
             this.lblwaktu.BackColor = System.Drawing.Color.Transparent;
             this.lblwaktu.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblwaktu.ForeColor = System.Drawing.Color.Black;
-            this.lblwaktu.Location = new System.Drawing.Point(330, 119);
+            this.lblwaktu.Location = new System.Drawing.Point(330, 118);
             this.lblwaktu.Name = "lblwaktu";
             this.lblwaktu.Size = new System.Drawing.Size(48, 15);
             this.lblwaktu.TabIndex = 1;
@@ -88,5 +101,6 @@
         private GroupBox gpuser;
         private Label lblpesan;
         private Label lblwaktu;
+        private Label lblhapus;
     }
 }
