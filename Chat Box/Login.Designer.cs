@@ -33,6 +33,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtuser = new System.Windows.Forms.TextBox();
             this.btnlogin = new System.Windows.Forms.Button();
+            this.lbldaftar = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // label2
@@ -50,6 +51,7 @@
             this.txtpass.Name = "txtpass";
             this.txtpass.Size = new System.Drawing.Size(100, 23);
             this.txtpass.TabIndex = 8;
+            this.txtpass.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtpass_KeyDown);
             // 
             // label1
             // 
@@ -66,6 +68,7 @@
             this.txtuser.Name = "txtuser";
             this.txtuser.Size = new System.Drawing.Size(100, 23);
             this.txtuser.TabIndex = 6;
+            this.txtuser.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtuser_KeyDown);
             // 
             // btnlogin
             // 
@@ -77,11 +80,23 @@
             this.btnlogin.UseVisualStyleBackColor = true;
             this.btnlogin.Click += new System.EventHandler(this.btnlogin_Click);
             // 
+            // lbldaftar
+            // 
+            this.lbldaftar.AutoSize = true;
+            this.lbldaftar.Location = new System.Drawing.Point(89, 119);
+            this.lbldaftar.Name = "lbldaftar";
+            this.lbldaftar.Size = new System.Drawing.Size(39, 15);
+            this.lbldaftar.TabIndex = 10;
+            this.lbldaftar.TabStop = true;
+            this.lbldaftar.Text = "Daftar";
+            this.lbldaftar.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbldaftar_LinkClicked);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(220, 126);
+            this.ClientSize = new System.Drawing.Size(220, 143);
+            this.Controls.Add(this.lbldaftar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtpass);
             this.Controls.Add(this.label1);
@@ -104,5 +119,6 @@
         private Label label1;
         private TextBox txtuser;
         private Button btnlogin;
+        private LinkLabel lbldaftar;
     }
 }

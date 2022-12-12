@@ -78,7 +78,6 @@
             this.lbluser.Size = new System.Drawing.Size(60, 15);
             this.lbluser.TabIndex = 3;
             this.lbluser.Text = "Username";
-            this.lbluser.Click += new System.EventHandler(this.lbluser_Click);
             // 
             // groupBox1
             // 
@@ -121,6 +120,7 @@
             this.txtpesan.Name = "txtpesan";
             this.txtpesan.Size = new System.Drawing.Size(293, 23);
             this.txtpesan.TabIndex = 2;
+            this.txtpesan.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtpesan_KeyDown);
             // 
             // btnmasuk
             // 
@@ -139,6 +139,7 @@
             this.txtchatid.Name = "txtchatid";
             this.txtchatid.Size = new System.Drawing.Size(163, 23);
             this.txtchatid.TabIndex = 0;
+            this.txtchatid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtchatid_KeyDown);
             // 
             // Chat
             // 
@@ -152,7 +153,6 @@
             this.MinimizeBox = false;
             this.Name = "Chat";
             this.Text = "Chat";
-            this.Load += new System.EventHandler(this.Chat_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
