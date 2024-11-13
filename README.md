@@ -1,3 +1,3 @@
 # Chat-Box
 
-DO BOT USE THIS PROGRAM
+School Project
